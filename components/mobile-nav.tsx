@@ -2,45 +2,58 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Download, FileSpreadsheet, HelpCircle, Save, Settings, Upload, User } from "lucide-react"
+import { Download, FileSpreadsheet, HelpCircle, Home, Save, Settings, Upload, User } from "lucide-react"
 
 export function MobileNav() {
   return (
-    <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-      <div className="flex flex-col space-y-3">
-        <Link href="#" className="flex items-center gap-2">
-          <User className="h-4 w-4" />
-          <span>Profile</span>
+    <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium">Navigation</h3>
+        <Link href="/" passHref>
+          <Button variant="ghost" size="sm" className="justify-start gap-2">
+            <Home className="h-4 w-4" />
+            <span>Home</span>
+          </Button>
         </Link>
-        <Link href="#" className="flex items-center gap-2">
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium">Actions</h3>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
+          <Upload className="h-4 w-4" />
+          <span>Import</span>
+        </Button>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
+          <Download className="h-4 w-4" />
+          <span>Export</span>
+        </Button>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
+          <Save className="h-4 w-4" />
+          <span>Save</span>
+        </Button>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
+          <FileSpreadsheet className="h-4 w-4" />
+          <span>Report</span>
+        </Button>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium">Account</h3>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
           <Settings className="h-4 w-4" />
           <span>Settings</span>
-        </Link>
-        <Link href="#" className="flex items-center gap-2">
+        </Button>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
           <HelpCircle className="h-4 w-4" />
           <span>Help</span>
-        </Link>
-      </div>
-      <div className="flex flex-col gap-2 mt-6">
-        <Button variant="outline" size="sm" className="justify-start">
-          <Upload className="h-4 w-4 mr-2" />
-          <span>Import Data</span>
         </Button>
-        <Button variant="outline" size="sm" className="justify-start">
-          <Download className="h-4 w-4 mr-2" />
-          <span>Export Results</span>
-        </Button>
-        <Button variant="outline" size="sm" className="justify-start">
-          <Save className="h-4 w-4 mr-2" />
-          <span>Save Project</span>
-        </Button>
-        <Button variant="outline" size="sm" className="justify-start">
-          <FileSpreadsheet className="h-4 w-4 mr-2" />
-          <span>Generate Report</span>
+        <Button variant="ghost" size="sm" className="justify-start gap-2">
+          <User className="h-4 w-4" />
+          <span>Profile</span>
         </Button>
       </div>
-    </ScrollArea>
+    </div>
   )
 }
+
 

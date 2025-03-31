@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Header } from "@/components/header"
 import {
   ArrowRight,
   FileUp,
@@ -109,23 +109,6 @@ export function LandingPage() {
     }
   }
 
-  // Simulate file upload process
-  const simulateUpload = () => {
-    setUploadStatus("uploading")
-    setUploadProgress(0)
-
-    const interval = setInterval(() => {
-      setUploadProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          setUploadStatus("success")
-          return 100
-        }
-        return prev + 5
-      })
-    }, 150)
-  }
-
   // Start analysis with uploaded files
   const startAnalysis = () => {
     // In a real app, you would process the files here
@@ -143,104 +126,71 @@ export function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <div className="flex items-center gap-2 font-semibold mr-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6 text-primary"
-            >
-              <path d="M2 12h10M12 2v20M22 12h-8M12 22v-8M22 2v8M2 22v-8" />
-            </svg>
-            <span>TPA Tool</span>
-          </div>
-          <div className="ml-auto flex items-center gap-2">
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="sm">
-                    Documentation
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View documentation and help</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <Button size="sm">Sign In</Button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/30">
+      <Header />
 
-      <main className="container py-10">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-start">
-          <div className="space-y-4">
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Transfer Path Analysis Tool</h1>
-              <p className="mt-4 text-muted-foreground text-lg">
+      <main className="flex-1 container py-10 mx-auto max-w-7xl">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
+          <div className="space-y-6">
+            <div className="max-w-xl">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Transfer Path Analysis Tool</h1>
+              <p className="mt-4 text-xl text-muted-foreground">
                 Analyze and visualize noise and vibration transfer paths with our advanced TPA tool.
               </p>
             </div>
 
-            <div className="grid gap-4">
+            <div className="grid gap-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                  <Database className="h-5 w-5 text-primary" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <Database className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Data-Driven Analysis</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-lg font-semibold">Data-Driven Analysis</h3>
+                  <p className="text-muted-foreground">
                     Upload your measurement data and let our tool handle the complex calculations.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                  <Wand2 className="h-5 w-5 text-primary" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <Wand2 className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Interactive Visualization</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-lg font-semibold">Interactive Visualization</h3>
+                  <p className="text-muted-foreground">
                     Explore your results with interactive charts and customizable views.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                  <FileSpreadsheet className="h-5 w-5 text-primary" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <FileSpreadsheet className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Comprehensive Reporting</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-lg font-semibold">Comprehensive Reporting</h3>
+                  <p className="text-muted-foreground">
                     Generate detailed reports and export your findings in various formats.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button onClick={() => setActiveTab("upload")} size="lg" className="gap-2">
-                <Upload className="h-4 w-4" />
+                <Upload className="h-5 w-5" />
                 Upload Data
               </Button>
               <Button variant="outline" size="lg" onClick={() => router.push("/tpa-tool")}>
                 Try Demo
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
           </div>
 
           <div>
-            <Card className="border-2">
+            <Card className="border-2 shadow-lg">
               <CardHeader>
                 <CardTitle>Get Started with Your Analysis</CardTitle>
                 <CardDescription>Upload your measurement data to begin analyzing transfer paths</CardDescription>
@@ -266,12 +216,12 @@ export function LandingPage() {
                       onDragLeave={() => setIsDragging(false)}
                       onDrop={handleDrop}
                     >
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="rounded-full bg-primary/10 p-3">
-                          <FileUp className="h-6 w-6 text-primary" />
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="rounded-full bg-primary/10 p-4">
+                          <FileUp className="h-8 w-8 text-primary" />
                         </div>
-                        <h3 className="font-medium">Drag and drop your files here</h3>
-                        <p className="text-sm text-muted-foreground max-w-md">
+                        <h3 className="text-lg font-medium">Drag and drop your files here</h3>
+                        <p className="text-muted-foreground max-w-md">
                           Upload your measurement data files (.csv, .xlsx, .mat, .h5) to begin your analysis
                         </p>
 
@@ -323,10 +273,10 @@ export function LandingPage() {
                         <h4 className="font-medium">Uploaded Files</h4>
                         <div className="space-y-2">
                           {uploadedFiles.map((file, index) => (
-                            <div key={index} className="flex items-center justify-between bg-muted/50 p-2 rounded-md">
+                            <div key={index} className="flex items-center justify-between bg-muted/50 p-3 rounded-md">
                               <div className="flex items-center gap-2">
                                 <FileSpreadsheet className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-medium">{file.name}</span>
+                                <span className="font-medium">{file.name}</span>
                                 <Badge variant="outline" className="text-xs">
                                   {(file.size / 1024).toFixed(0)} KB
                                 </Badge>
@@ -432,19 +382,19 @@ export function LandingPage() {
           </div>
         </div>
 
-        <div className="mt-16 border-t pt-8">
-          <h2 className="text-2xl font-bold tracking-tight mb-6">How It Works</h2>
-          <div className="grid gap-6 md:grid-cols-3">
+        <div className="mt-20 border-t pt-10">
+          <h2 className="text-3xl font-bold tracking-tight mb-8 text-center">How It Works</h2>
+          <div className="grid gap-8 md:grid-cols-3">
             <Card>
               <CardHeader>
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <span className="text-xl font-bold text-primary">1</span>
+                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 mb-2">
+                  <span className="text-2xl font-bold text-primary">1</span>
                 </div>
                 <CardTitle>Upload Your Data</CardTitle>
                 <CardDescription>Import your measurement data from various file formats</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground">
                   Upload your FRF measurements, operational data, and other relevant information. The tool supports
                   various file formats including CSV, Excel, MATLAB, and HDF5.
                 </p>
@@ -453,14 +403,14 @@ export function LandingPage() {
 
             <Card>
               <CardHeader>
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <span className="text-xl font-bold text-primary">2</span>
+                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 mb-2">
+                  <span className="text-2xl font-bold text-primary">2</span>
                 </div>
                 <CardTitle>Configure Your Model</CardTitle>
                 <CardDescription>Set up your analysis parameters and select paths</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground">
                   Define your targets, paths, and indicators. Select the appropriate FRFs and operational data for your
                   analysis. Configure frequency ranges and other parameters.
                 </p>
@@ -469,14 +419,14 @@ export function LandingPage() {
 
             <Card>
               <CardHeader>
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-2">
-                  <span className="text-xl font-bold text-primary">3</span>
+                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 mb-2">
+                  <span className="text-2xl font-bold text-primary">3</span>
                 </div>
                 <CardTitle>Analyze Results</CardTitle>
                 <CardDescription>Visualize and interpret your transfer path analysis</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground">
                   Explore interactive visualizations of your results. Identify dominant transfer paths, analyze
                   frequency responses, and generate comprehensive reports for your findings.
                 </p>
@@ -486,8 +436,8 @@ export function LandingPage() {
         </div>
       </main>
 
-      <footer className="border-t bg-muted/40">
-        <div className="container py-8">
+      <footer className="border-t bg-muted/40 mt-auto">
+        <div className="container py-10 mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div>
               <h3 className="text-lg font-semibold mb-4">TPA Tool</h3>

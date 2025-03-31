@@ -10,7 +10,7 @@ class File(Base):
     filepath = Column(String)
     filetype = Column(String)
     filesize = Column(Integer)
-    metadata = Column(JSON)
+    file_metadata = Column(JSON)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 

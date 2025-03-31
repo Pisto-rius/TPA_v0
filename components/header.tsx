@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -10,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Download, FileSpreadsheet, HelpCircle, Menu, Save, Settings, Upload, User } from "lucide-react"
+import { Download, FileSpreadsheet, HelpCircle, Home, Menu, Save, Settings, Upload, User } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { MobileNav } from "@/components/mobile-nav"
 
@@ -27,21 +28,32 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="flex items-center gap-2 font-semibold mr-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6 text-primary"
-          >
-            <path d="M2 12h10M12 2v20M22 12h-8M12 22v-8M22 2v8M2 22v-8" />
-          </svg>
-          <span>TPA Tool</span>
+      <div className="container flex h-14 items-center justify-between">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-2 font-semibold">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 text-primary"
+            >
+              <path d="M2 12h10M12 2v20M22 12h-8M12 22v-8M22 2v8M2 22v-8" />
+            </svg>
+            <span>TPA Tool</span>
+          </Link>
+
+          <nav className="hidden md:flex items-center space-x-1">
+            <Link href="/" passHref>
+              <Button variant="ghost" size="sm" className="gap-1">
+                <Home className="h-4 w-4" />
+                <span>Home</span>
+              </Button>
+            </Link>
+          </nav>
         </div>
 
         <div className="hidden md:flex items-center gap-2">
@@ -63,7 +75,7 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="flex flex-1 items-center justify-end space-x-2">
+        <div className="flex items-center space-x-2">
           <nav className="hidden md:flex items-center space-x-2">
             <Button variant="ghost" size="icon">
               <Settings className="h-5 w-5" />

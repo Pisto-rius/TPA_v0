@@ -1,6 +1,7 @@
 import asyncio
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks, Request
 from sqlalchemy.orm import Session
+from typing import List
 from ...db.base import get_db
 from ...schemas.analysis import AnalysisCreate, AnalysisResponse, AnalysisStatus
 from ...db.models.analysis import Analysis as AnalysisModel, AnalysisStatus as DBAnalysisStatus
